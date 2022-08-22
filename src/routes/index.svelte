@@ -1,7 +1,6 @@
 <script>
 	import { shoppingItems, tickedShoppingItems } from '../stores//shoppingItem';
 	import { get } from 'svelte/store';
-	import autoAnimate from '@formkit/auto-animate';
 
 	let newItem;
 
@@ -50,7 +49,7 @@
 
 	<!-- <hr class="my-6 border border-blue" /> -->
 
-	<ul class="px-6 pt-12" use:autoAnimate>
+	<ul class="px-6 pt-12">
 		{#each $shoppingItems as item, index}
 			<li class="flex items-center justify-between text-neutral-content py-4 w-full">
 				<span>{item}</span>
@@ -85,7 +84,7 @@
 			</li>
 		{:else}{/each}
 	</ul>
-	<ul class="px-6" use:autoAnimate>
+	<ul class="px-6">
 		{#each $tickedShoppingItems as item, index}
 			<li class="flex items-center justify-between text-neutral-content py-4 w-full">
 				<span class="line-through">{item}</span>
