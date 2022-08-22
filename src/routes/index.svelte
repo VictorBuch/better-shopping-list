@@ -1,6 +1,7 @@
 <script>
 	import { shoppingItems, tickedShoppingItems } from '../stores//shoppingItem';
 	import { get } from 'svelte/store';
+	import autoAnimate from '@formkit/auto-animate';
 
 	let newItem;
 
@@ -37,19 +38,19 @@
 </script>
 
 <main class="flex flex-col py-6">
-	<h1 class="text-2xl font-bold px-6 pt-6">Shopping List</h1>
+	<h1 class="text-2xl font-bold px-6 pt-6 text-blue">Shopping List</h1>
 	<form on:submit|preventDefault={addNewItem} class="w-full flex pt-6 items-center justify-center">
 		<input
 			bind:value={newItem}
 			type="text"
 			placeholder="Add items"
-			class="input input-ghost w-full mx-6"
+			class="input w-full mx-6 placeholder-blue ring-blue border border-blue"
 		/>
 	</form>
 
-	<hr class="my-6" />
+	<!-- <hr class="my-6 border border-blue" /> -->
 
-	<ul class="px-6">
+	<ul class="px-6 pt-12" use:autoAnimate>
 		{#each $shoppingItems as item, index}
 			<li class="flex items-center justify-between text-neutral-content py-4 w-full">
 				<span>{item}</span>
@@ -84,7 +85,7 @@
 			</li>
 		{:else}{/each}
 	</ul>
-	<ul class="px-6">
+	<ul class="px-6" use:autoAnimate>
 		{#each $tickedShoppingItems as item, index}
 			<li class="flex items-center justify-between text-neutral-content py-4 w-full">
 				<span class="line-through">{item}</span>
@@ -109,10 +110,21 @@
 						stroke="currentColor"
 						stroke-width="2"
 					>
-						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+						/>
 					</svg>
 				</div>
 			</li>
 		{:else}{/each}
 	</ul>
 </main>
+
+<style>
+	span,
+	svg {
+		@apply text-flamingo;
+	}
+</style>
