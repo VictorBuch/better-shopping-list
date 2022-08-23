@@ -1,6 +1,7 @@
 <script>
 	import { shoppingItems, tickedShoppingItems } from '../stores//shoppingItem';
 	import { get } from 'svelte/store';
+	import { fly, fade } from 'svelte/transition';
 
 	let newItem;
 
@@ -52,7 +53,10 @@
 	<ul class="px-6 pt-12">
 		{#each $shoppingItems as item, index}
 			<li class="flex items-center justify-between text-neutral-content py-4 w-full">
-				<span>{item}</span>
+				<input
+					bind:value={$shoppingItems[index]}
+					class="decoration-none text-flamingo bg-transparent border-none focus:ring-transparent focus:border-none outline-none"
+				/>
 				<div class="flex items-center space-x-6">
 					<svg
 						on:click={() => tickItem(index)}
