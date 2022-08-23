@@ -1,7 +1,6 @@
 <script>
 	import { shoppingItems, tickedShoppingItems } from '../stores//shoppingItem';
 	import { get } from 'svelte/store';
-	import { fly, fade } from 'svelte/transition';
 
 	let newItem;
 
